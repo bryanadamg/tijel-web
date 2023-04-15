@@ -48,25 +48,6 @@ async def ask(ctx, *, message=None):
       await ctx.channel.send(e)
 
 
-@bot.command(help='Use this command to anonymously send message to a text channel! DM me with the following format: \n!say [channel name] [your message here]')
-async def say(ctx, *, message=None):
-  # extract channel name and message
-  channel_name = message.split()[0]
-  msg_context = message[len(channel_name)+1:]
-  # sandbox guild id
-  sanbox_id = 956209613475299338
-  # target our personal guild (Mixr Stream)
-  our_guild_id = 457449871561981973
-  our_guild = bot.get_guild(our_guild_id)
-  # get target channel id 
-  try:
-    channel = discord.utils.get(our_guild.channels, name=channel_name)
-    channel_id = channel.id
-    await channel.send(msg_context)
-  except:
-    msg_context = 'channel not found. \n !say [channel] [message]'
-    await ctx.channel.send(msg_context)
-
 
 def embed_leaderboard(dictionary):
   dictionary = dict(sorted(dictionary.items(), key=lambda item: (-item[1][1], item[1][0])))
