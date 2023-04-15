@@ -1,0 +1,11 @@
+langchain
+tiktoken
+matplotlib
+seaborn
+tqdm
+unstructured
+openai
+pinecone-client
+pytesseract
+pdf2image
+chromadb
