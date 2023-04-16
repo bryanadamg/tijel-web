@@ -31,7 +31,7 @@
     --gray-dark: #32325d;
     --lighter: #e9ecef;
     --bs-body-color: #525f7f;
-    --bs-primary: #5e72e4;
+    --bs-primary: #9597a4;
     --bs-secondary: #f7fafc;
     --bs-success: null;
     --bs-info: #11cdef;
@@ -43,8 +43,8 @@
     --white: #fff;
     --neutral: #fff;
     --darker: black;
-    --bs-gradient-primary-right: #5e72e4;
-    --bs-gradient-primary-left: #825ee4;
+    --bs-gradient-primary-right: #8990b8;
+    --bs-gradient-primary-left: #5f5d65;
     --bs-gradient-info-right: #11cdef;
     --bs-gradient-info-left: #1171ef;
     --bs-gradient-danger-right: #f5365c;
@@ -15418,7 +15418,7 @@ textarea[resize="horizontal"] {
 }
 .navbar-search-dark .input-group {
     border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(23, 43, 77, 0.8);
+    background-color: rgba(227, 227, 227, 0.8);
 }
 .navbar-search-dark .input-group-text {
     color: rgba(255, 255, 255, 0.6);
@@ -15434,7 +15434,7 @@ textarea[resize="horizontal"] {
 }
 .navbar-search-dark .focused .input-group {
     border-color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(23, 43, 77, 0.9);
+    background-color: rgba(227, 227, 227, 0.9);
 }
 .navbar-search-light .input-group {
     border-color: rgba(0, 0, 0, 0.6);
@@ -17859,7 +17859,7 @@ a.text-lighter:hover {
 }
 .bootstrap-tagsinput [data-role="remove"]:after {
     font-size: 16px;
-    content: "×";
+    content: "ï¿½";
 }
 #chartjs-tooltip {
     position: absolute;

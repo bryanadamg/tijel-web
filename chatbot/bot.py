@@ -2,9 +2,11 @@ from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 from langchain.tools import BaseTool
 from langchain.llms import OpenAI
-from .pinecone_db import KnowledgeBase
+from chatbot.knowledgebase import KnowledgeBase
 from langchain import PromptTemplate, OpenAI, LLMChain
 from langchain import LLMMathChain
+from langchain.memory import ConversationBufferMemory
+import os, json, openai
 
 
 _PROMPT_TEMPLATE = """You are a 50 years old grumpy and sensitive debater and relationship coach.
@@ -65,8 +67,11 @@ You (Regina George):"""
 class MeenaBot:
 
     def __init__(self, index_name) -> None:
+        self.auth()
         self.llm = OpenAI(temperature=0)
         self.knowledge = KnowledgeBase(index_name)
+        self.memory = ConversationBufferMemory(memory_key="chat_history")
+
         # self.tools = tools = [
         #     Tool(
         #         name="Discord Chat Search",
@@ -75,9 +80,16 @@ class MeenaBot:
         #             an event in Discord Chat or about someone in the group chat."
         #     )
         # ]
-        self.prompt = PromptTemplate(template=REGINA_PROMPT_TEMPLATE, input_variables=["chat_history", "input"])
+        self.prompt = PromptTemplate(template=_PROMPT_TEMPLATE, input_variables=["chat_history", "input"])
         self.llm_chain = LLMChain(llm=self.llm, prompt=self.prompt)
 
+    @staticmethod
+    def auth():
+        if os.path.exists('./creds/keys.json'):
+            with open('./creds/keys.json') as key:
+                creds = json.load(key)
+            openai.api_key = creds['openai']
+        print('OpenAI key found')
 
     def ask(self, query):
         print('Input: ', query)

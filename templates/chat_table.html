@@ -1,0 +1,42 @@
+
+<!-- CHAT BEGINS HERE -->
+<div class="card-body overflow-auto overflow-x-hidden">
+
+    {%for message in messages%}
+        {% if message['role'] == "Human" %}
+            <!-- HUMAN INPUT -->
+            <div class="row justify-content-end text-right mb-4">
+                <div class="col-auto">
+                    <div class="card bg-gradient-primary text-white">
+                        <div class="card-body p-2">
+                            <p class="mb-1">
+                                {{ message['message'] }}<br>
+                            </p>
+                            <div class="d-flex align-items-center justify-content-end text-sm opacity-6">
+                                <i class="fa fa-check-double mr-1 text-xs" aria-hidden="true"></i>
+                                <small>4:42pm</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <!-- AI RESPONSE -->
+            <div class="row justify-content-start mb-4">
+                <div class="col-auto">
+                    <div class="card ">
+                        <div class="card-body p-2">
+                            <p class="mb-1">
+                                {{ message['message']}}
+                            </p>
+                            <div class="d-flex align-items-center text-sm opacity-6">
+                                <i class="far fa-clock mr-1" aria-hidden="true"></i>
+                                <small>3:14am</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {%endfor%}
+</div>

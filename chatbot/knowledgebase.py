@@ -32,7 +32,10 @@ class KnowledgeBase:
             with open('./creds/keys.json') as key:
                 creds = json.load(key)
             openai.api_key = creds['openai']
-        print('OpenAI key found')
+            pinecone.init(
+                api_key=creds['pinecone'],
+                environment=creds['pinecone_env']
+            )
 
 
     # create the length function
@@ -112,10 +115,7 @@ class KnowledgeBase:
 
 
     def connectPinecone(self, index_name):
-        pinecone.init(
-            api_key=PINECONE_API_KEY,
-            environment=PINECONE_ENV
-        )
+
         if index_name not in pinecone.list_indexes():
             print('Creating New Index...')
             pinecone.create_index(

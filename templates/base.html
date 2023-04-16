@@ -16,12 +16,12 @@
         <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main">
             <div class="sidenav-header  align-items-center">
                 <a class="navbar-brand" href="javascript:void(0)">
-                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/brand/blue.png" class="navbar-brand-img" alt="...">
+                    <img src="{{ url_for('static', filename='img/logo.jpg') }}" class="navbar-brand-img" alt="...">
                 </a>
             </div>
             <hr class="mt-0 mb-3">
             <div class="d-flex align-items-center">
-                <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="avatar ml-3">
+                <img src="{{ url_for('static', filename='img/user.jpg' )}}" class="avatar ml-3">
                 <div class="ml-3">
                     <h4 class="mb-0">Tijel User</h4>
                     <p class="text-xs mb-0">Just For Fun</p>
@@ -202,7 +202,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-xl py-0 overflow-hidden">
                                 <div class="px-3 pt-3">
-                                    <h6 class="text-sm text-muted m-0">You have <span class="text-primary">3</span> new notifications!</h6>
+                                    <h6 class="text-sm text-muted m-0">You have <span class="text-primary">2</span> new notifications!</h6>
                                 </div>
                                 <div class="list-group list-group-flush">
 
@@ -210,12 +210,12 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-1.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ url_for('static', filename='img/friend.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">John Snow</h4>
+                                                        <h4 class="mb-0 text-sm">Tijel Friend 1</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>2 hrs ago</small>
@@ -230,12 +230,12 @@
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-2.jpg" class="avatar rounded-circle">
+                                                <img alt="Image placeholder" src="{{ url_for('static', filename='img/friend-2.jpg') }}" class="avatar rounded-circle">
                                             </div>
                                             <div class="col ml--2">
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <div>
-                                                        <h4 class="mb-0 text-sm">Alexa Mira</h4>
+                                                        <h4 class="mb-0 text-sm">Tijel Friend 2</h4>
                                                     </div>
                                                     <div class="text-right text-muted">
                                                         <small>3 hrs ago</small>
@@ -246,25 +246,6 @@
                                         </div>
                                     </a>
 
-                                    <a href="#!" class="list-group-item list-group-item-action">
-                                        <div class="row align-items-center">
-                                            <div class="col-auto">
-                                                <!-- Avatar -->
-                                                <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-3.jpg" class="avatar rounded-circle">
-                                            </div>
-                                            <div class="col ml--2">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <div>
-                                                        <h4 class="mb-0 text-sm">Rala Micharel</h4>
-                                                    </div>
-                                                    <div class="text-right text-muted">
-                                                        <small>4 hrs ago</small>
-                                                    </div>
-                                                </div>
-                                                <p class="text-sm mb-0">Just saw your referring program. Can you please give me more details?</p>
-                                            </div>
-                                        </div>
-                                    </a>
                                 </div>
                             </div>
                         </li>
@@ -274,7 +255,7 @@
                             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm">
-                                        <img alt="Image placeholder" src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg">
+                                        <img alt="Image placeholder" src="{{ url_for('static', filename='img/user.jpg') }}">
                                     </span>
                                 </div>
                             </a>
@@ -354,6 +335,7 @@
         </footer>
     </div>
     <div class="loopple-badge">Made with<a href="https://www.loopple.com"><img src="https://www.loopple.com/img/loopple-logo.png" class="loopple-ml-1" style="width:55px"></a></div>
+    <script src="https://unpkg.com/htmx.org@1.9.0"></script>
     <script src="https://rawcdn.githack.com/Loopple/loopple-public-assets/5cef8f62939eeb089fa26d4c53a49198de421e3d/argon-dashboard/js/vendor/jquery.min.js"></script>
     <script src="https://rawcdn.githack.com/Loopple/loopple-public-assets/5cef8f62939eeb089fa26d4c53a49198de421e3d/argon-dashboard/js/vendor/bootstrap.bundle.min.js"></script>
     <script src="https://rawcdn.githack.com/Loopple/loopple-public-assets/5cef8f62939eeb089fa26d4c53a49198de421e3d/argon-dashboard/js/vendor/js.cookie.js"></script>

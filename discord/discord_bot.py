@@ -4,7 +4,8 @@ import requests
 from discord.ext import commands
 from discord.utils import get
 import json
-from utils.discord_tool import MeenaBot
+from chatbot.bot import MeenaBot
+from bs4 import BeautifulSoup
 
 chatbot = MeenaBot('discord-msgs')
 
@@ -13,8 +14,20 @@ bot = commands.Bot(command_prefix='!', intents=intents, help_command=None)
 
 # client = discord.Client()
 # bot = discord.Client()
-advice_url = 'https://api.adviceslip.com/advice'
-horoscope_url = 'https://aztro.sameerkumar.website/'
+SIGNS = signs = {
+    "aries": 1,
+    "taurus": 2,
+    "gemini": 3,
+    "cancer": 4,
+    "leo": 5,
+    "virgo": 6,
+    "libra": 7,
+    "scorpio": 8,
+    "sagittarius": 9,
+    "capricorn": 10,
+    "aquarius": 11,
+    "pisces": 12,
+}
 
 @bot.event
 async def on_ready():
@@ -24,18 +37,15 @@ async def on_ready():
 @bot.command()
 async def horoscope(ctx, arg):
     sign = str(arg)
-    params = (('sign', sign),('day', 'today'))
-    horoscope = requests.post("https://aztro.sameerkumar.website/?sign="+sign+"&day=today")
-    print(horoscope)
+    url = f"https://www.horoscope.com/us/horoscopes/general/horoscope-general-daily-today.aspx?sign={SIGNS[sign]}"
+    horoscope = requests.post(url)
+    soup = BeautifulSoup(horoscope.text, 'html.parser')
+    container = soup.find("p")
+    print(container.text.strip())
     try:
-      await ctx.channel.send(horoscope.json()["message"][:10])
+      await ctx.channel.send(container.text.strip())
     except:
-      msg_str = horoscope.json()["description"]
-      msg_str += '\n\n' + 'Mood: ' + horoscope.json()["mood"]
-      msg_str += ', Compatibility: ' + horoscope.json()["compatibility"]
-      msg_str += '\n' + 'Lucky Number: ' + horoscope.json()["lucky_number"]
-      msg_str += ', Lucky Time: ' + horoscope.json()["lucky_time"]
-      await ctx.channel.send(msg_str)
+      await ctx.channel.send("Error")
 
 @bot.command()
 async def ask(ctx, *, message=None):
