@@ -85,6 +85,7 @@ class MeenaBot:
 
     @staticmethod
     def auth(key):
+        print(os.getcwd())
         if key is not None:
             openai.api_key = key
             return
