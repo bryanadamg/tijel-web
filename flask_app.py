@@ -3,25 +3,21 @@ import requests
 from chatbot.bot import MeenaBot
 from utils import authenticate
 # import discord_bot
+import os
 
 app = Flask(__name__)
 
 # authenticate.authOpenAI()
 # authenticate.authPinecone()
-chatbot = MeenaBot('discord-msgs')
+# chatbot = MeenaBot('discord-msgs')
 
 @app.route('/')
 def hello_world():
-    return render_template('body.html')
 
+    envs = str(os.environ)
 
-@app.route('/api/bot', methods=['POST'])
-def bot_response():
-    query = request.form['message']
-    # chatbot = MeenaBot('discord-msgs')
-    res = chatbot.ask(query)
-    messages = [{'role': 'Human', 'message': query}, {'role': 'AI', 'message': res}]
-    return render_template('chat_table.html', messages=messages)
+    return '<br>'.join(envs.split(','))
+
 
 
 if __name__ == '__main__':
