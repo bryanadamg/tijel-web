@@ -2,7 +2,7 @@ from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 from langchain.tools import BaseTool
 from langchain.llms import OpenAI
-from knowledgebase import KnowledgeBase
+from chatbot.knowledgebase import KnowledgeBase
 from langchain import PromptTemplate, OpenAI, LLMChain
 from langchain import LLMMathChain
 from langchain.memory import ConversationBufferMemory

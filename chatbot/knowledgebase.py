@@ -178,12 +178,12 @@ class KnowledgeBase:
 
 
 if __name__ == "__main__":
-    from discord_loader import DiscordChatLoader
+    # from discord_loader import DiscordChatLoader
 
-    loader = DiscordChatLoader('./data/general.json')
-    docs = loader.load()
+    # loader = DiscordChatLoader('./data/general.json')
+    # docs = loader.load()
 
-    knowledge = KnowledgeBase('discord-chunks', 'discord-msgs', docs)
+    knowledge = KnowledgeBase('discord-chunks', 'discord-msgs', None)
     # knowledge.upsertDocs('discord-msgs')
     print(knowledge.ask('What are important points to be remembered by a Project Manager?'))
     # print(docs[0])
