@@ -14,7 +14,7 @@ EMBED_MODEL = "text-embedding-ada-002"
 class KnowledgeBase:
     
     def __init__(self, index_name, fname=None, documents=None, encoder='cl100k_base') -> None:
-        self.auth()
+        # self.auth()
         if fname is None or documents is None:
             # index is expected to be ready
             print('Looking for index: ', index_name)
