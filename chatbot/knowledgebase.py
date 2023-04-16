@@ -183,7 +183,7 @@ if __name__ == "__main__":
     # loader = DiscordChatLoader('./data/general.json')
     # docs = loader.load()
 
-    knowledge = KnowledgeBase('discord-chunks', 'discord-msgs', None)
+    knowledge = KnowledgeBase('discord-msgs', 'discord-msgs', None)
     # knowledge.upsertDocs('discord-msgs')
     print(knowledge.ask('What are important points to be remembered by a Project Manager?'))
     # print(docs[0])
