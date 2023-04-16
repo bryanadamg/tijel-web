@@ -4,14 +4,14 @@ import pinecone
 
 def authOpenAI():
     print(os.getcwd())
-    if os.path.exists('./creds/keys.json'):
+    if os.path.exists(f'{os.getcwd()}/creds/keys.json'):
         with open('./creds/keys.json') as key:
             creds = json.load(key)
         openai.api_key = creds['openai']
     return
 
 def authPinecone():
-    if os.path.exists('./creds/keys.json'):
+    if os.path.exists(f'{os.getcwd()}/creds/keys.json'):
         with open('./creds/keys.json') as key:
             creds = json.load(key)
             pinecone.init(
