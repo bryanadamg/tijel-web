@@ -8,7 +8,7 @@ from langchain import LLMMathChain
 from langchain.memory import ConversationBufferMemory
 import os, json, openai
 
-PATH = f'{os.getcwd()}/creds/keys.json'
+PATH = f'/{os.getcwd()}/creds/keys.json'
 
 
 _PROMPT_TEMPLATE = """You are a 50 years old grumpy and sensitive debater and relationship coach.
