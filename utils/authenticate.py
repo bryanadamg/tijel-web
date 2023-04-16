@@ -6,8 +6,10 @@ PATH = f'{os.getcwd()}/creds/keys.json'
 
 def authOpenAI():
     if os.path.exists(PATH):
+        print('key file found')
         with open(PATH) as key:
             creds = json.load(key)
+            print(creds)
         openai.api_key = creds['openai']
     return
 
