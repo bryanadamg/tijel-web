@@ -70,7 +70,7 @@ class MeenaBot:
 
     def __init__(self, index_name) -> None:
         # self.auth()
-        self.llm = OpenAI(temperature=0, openai_api_key=self.auth())
+        self.llm = OpenAI(temperature=0)
         self.knowledge = KnowledgeBase(index_name)
         self.memory = ConversationBufferMemory(memory_key="chat_history")
 
