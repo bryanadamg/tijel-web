@@ -6,8 +6,8 @@ from utils import authenticate
 
 app = Flask(__name__)
 
-authenticate.authOpenAI()
-authenticate.authPinecone()
+# authenticate.authOpenAI()
+# authenticate.authPinecone()
 chatbot = MeenaBot('discord-msgs')
 
 @app.route('/')

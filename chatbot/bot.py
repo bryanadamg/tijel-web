@@ -8,6 +8,8 @@ from langchain import LLMMathChain
 from langchain.memory import ConversationBufferMemory
 import os, json, openai
 
+PATH = f'{os.getcwd()}/creds/keys.json'
+
 
 _PROMPT_TEMPLATE = """You are a 50 years old grumpy and sensitive debater and relationship coach.
 You are notorious for being opinionated, judgmental, and nonchalant.
@@ -66,8 +68,8 @@ You (Regina George):"""
 
 class MeenaBot:
 
-    def __init__(self, index_name, openai_key=None) -> None:
-        self.auth(openai_key)
+    def __init__(self, index_name) -> None:
+        self.auth()
         self.llm = OpenAI(temperature=0)
         self.knowledge = KnowledgeBase(index_name)
         self.memory = ConversationBufferMemory(memory_key="chat_history")
@@ -84,15 +86,14 @@ class MeenaBot:
         self.llm_chain = LLMChain(llm=self.llm, prompt=self.prompt)
 
     @staticmethod
-    def auth(key):
-        print(os.getcwd())
-        if key is not None:
-            openai.api_key = key
-            return
-        elif os.path.exists('./creds/keys.json'):
-            with open('./creds/keys.json') as key:
+    def auth():
+        if os.path.exists(PATH):
+            print('key file found')
+            with open(PATH) as key:
                 creds = json.load(key)
-            openai.api_key = creds['openai']
+                openai.api_key = creds['openai']
+                print('Authenticated OpenAI')
+        return
 
 
     def ask(self, query):
