@@ -115,7 +115,10 @@ class KnowledgeBase:
 
 
     def connectPinecone(self, index_name):
-
+        pinecone.init(
+            api_key=os.getenv("PINECONE_KEY"),
+            environment=os.getenv("PINECONE_ENV")
+        )
         if index_name not in pinecone.list_indexes():
             print('Creating New Index...')
             pinecone.create_index(
