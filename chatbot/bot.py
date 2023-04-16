@@ -69,8 +69,8 @@ You (Regina George):"""
 class MeenaBot:
 
     def __init__(self, index_name) -> None:
-        self.auth()
-        self.llm = OpenAI(temperature=0)
+        # self.auth()
+        self.llm = OpenAI(temperature=0, openai_api_key=self.auth())
         self.knowledge = KnowledgeBase(index_name)
         self.memory = ConversationBufferMemory(memory_key="chat_history")
 
@@ -93,7 +93,7 @@ class MeenaBot:
                 creds = json.load(key)
                 openai.api_key = creds['openai']
                 print('Authenticated OpenAI')
-        return
+        return creds['openai']
 
 
     def ask(self, query):
