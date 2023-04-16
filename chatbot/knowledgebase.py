@@ -12,7 +12,7 @@ EMBED_MODEL = "text-embedding-ada-002"
 
 
 class KnowledgeBase:
-    
+
     def __init__(self, index_name, fname=None, documents=None, encoder='cl100k_base') -> None:
         # self.auth()
         if fname is None or documents is None:
@@ -45,7 +45,7 @@ class KnowledgeBase:
             disallowed_special=()
         )
         return len(tokens)
-    
+
 
     def chunkDocs(self, docs):
         text_splitter = RecursiveCharacterTextSplitter(
@@ -74,7 +74,7 @@ class KnowledgeBase:
                 f.write(json.dumps(doc) + '\n')
 
         return documents
-    
+
 
     def upsertDocs(self, index_name):
         index = pinecone.Index(index_name)
@@ -131,7 +131,7 @@ class KnowledgeBase:
         index = pinecone.Index(index_name)
         print('Pinecone Index status: ', index.describe_index_stats())
         return index
-    
+
 
     def customPrompt(self, context, query):
         prompt = f"""Answer the question based on the context below. If the
@@ -144,7 +144,7 @@ class KnowledgeBase:
 
             Answer: """
         return prompt
-    
+
 
     def retrieve(self, query):
         res = openai.Embedding.create(input=[query], engine=EMBED_MODEL)

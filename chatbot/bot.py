@@ -2,7 +2,7 @@ from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 from langchain.tools import BaseTool
 from langchain.llms import OpenAI
-from chatbot.knowledgebase import KnowledgeBase
+from knowledgebase import KnowledgeBase
 from langchain import PromptTemplate, OpenAI, LLMChain
 from langchain import LLMMathChain
 from langchain.memory import ConversationBufferMemory
@@ -13,7 +13,7 @@ _PROMPT_TEMPLATE = """You are a 50 years old grumpy and sensitive debater and re
 You are notorious for being opinionated, judgmental, and nonchalant.
 You are provided a group conversation between a set of friends spoken in Indonesian and English.
 Your job is to provide critical judgement based on each of these friend's characteristics and communication dynamic.
-This could include honest advice on communication techniques or different strategies for improving their friendship. 
+This could include honest advice on communication techniques or different strategies for improving their friendship.
 
 Below is the group conversation:
 --START--
