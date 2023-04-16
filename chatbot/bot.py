@@ -66,8 +66,8 @@ You (Regina George):"""
 
 class MeenaBot:
 
-    def __init__(self, index_name) -> None:
-        self.auth()
+    def __init__(self, index_name, openai_key=None) -> None:
+        self.auth(openai_key)
         self.llm = OpenAI(temperature=0)
         self.knowledge = KnowledgeBase(index_name)
         self.memory = ConversationBufferMemory(memory_key="chat_history")
@@ -84,12 +84,15 @@ class MeenaBot:
         self.llm_chain = LLMChain(llm=self.llm, prompt=self.prompt)
 
     @staticmethod
-    def auth():
-        if os.path.exists('./creds/keys.json'):
+    def auth(key):
+        if key is not None:
+            openai.api_key = key
+            return
+        elif os.path.exists('./creds/keys.json'):
             with open('./creds/keys.json') as key:
                 creds = json.load(key)
             openai.api_key = creds['openai']
-        print('OpenAI key found')
+
 
     def ask(self, query):
         print('Input: ', query)

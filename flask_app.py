@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request
 import requests
 from chatbot.bot import MeenaBot
+from utils import authenticate
 # import discord_bot
 
 app = Flask(__name__)
+
+authenticate.authOpenAI()
+authenticate.authPinecone()
 chatbot = MeenaBot('discord-msgs')
 
 @app.route('/')
