@@ -9,8 +9,8 @@ def authOpenAI():
         print('key file found')
         with open(PATH) as key:
             creds = json.load(key)
-            print(creds)
-        openai.api_key = creds['openai']
+            openai.api_key = creds['openai']
+            print('Authenticated OpenAI')
     return
 
 def authPinecone():
